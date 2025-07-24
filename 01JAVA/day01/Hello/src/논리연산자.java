@@ -12,5 +12,9 @@ public class 논리연산자 {
 		score = 70;
 		System.out.println(score < 70  || score++ < 90); //true
 		System.out.println(score);//뒤까지 평가를 진행하기에 score = 71이됨/.
+		
+		//삼항 연산자
+		String message = (score >= 60) ? "통과했습니다." : "실패했습니다.";
+		
 	}
 }
