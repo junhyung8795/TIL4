@@ -1,0 +1,34 @@
+package test01_File;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class ByteStreamTest03 {
+	public static void main(String[] args) {
+		// 생성자에 File 객체를 넣던지 문자열로 경로를 넣던지
+		//try with resources로 try문긑나면 알아서 close
+		
+		 
+		try (FileInputStream fis = new FileInputStream("dog.jpg");){
+			
+			FileOutputStream fos = new FileOutputStream("dog-copy");
+			int b; //byte를 담을 손
+			byte[] buffer = new byte[100];
+			
+			while((b = fis.read(buffer)) != -1) {
+				fos.write(b);
+				System.out.println(b);
+				fos.write(buffer, 0, b);
+			}
+		}catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("파일 없음 이슈");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("통로 이슈");
+		} 
+		//통로를 닫아야한다!
+	}
+}
