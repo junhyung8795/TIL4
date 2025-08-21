@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Flex</title>
+    <style>
+        body{
+            margin:0;
+            box-sizing: border-box;
+        }
+        .page{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            /* height:1000px; */
+            padding-bottom: 60px;
+        }
+        main{
+            flex:1;
+        }
+        footer{
+            background-color: black;
+            color:white;
+            text-align: center;
+            height: 60px;
+            position: fixed;
+            width:100%;
+            bottom:0;
+            line-height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <main>
+            <h1>본문내용</h1>
+            <p>본문내용</p>
+        </main>
+        <footer>
+            푸타
+        </footer>
+    </div>
+</body>
+</html>

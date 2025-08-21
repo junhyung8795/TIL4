@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Semantic + Flex Layout</title>
+  <style>
+    /* 레이아웃 보기 편하게만 최소 스타일 */
+    .wrap {
+      width: 760px;
+      height: 420px;
+      margin: 20px auto;
+      border: 4px solid #eee;
+      box-shadow: 0 0 0 1px #ddd inset;
+    }
+    header, footer{
+      background-color: tomato;
+      height: 50px;
+      text-align: center;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+    main{
+      display:flex;
+      height: calc(100% - 50px - 50px);
+    }
+    section{
+      background-color: teal;
+      /* flex:1은 grow, shrink, basic정보가 담겨잇다. 기본적으로 110으로 세팅돼잇다 */
+      /* 부족하면 좀 늘리고 너무 크면 좀 줄이고 기본값은 얼마인가에 대한 정보 */
+      flex:1;
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #articles{
+      display:flex;
+    }
+    article{
+      background-color: beige;
+      border: 1px solid black;
+      width : 33%;
+      height: 50px;
+
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- 상단영역 -->
+    <header>
+      <span>상단</span>
+    </header>
+    <!-- 중간영역 -->
+    
+      <main>
+        <section>
+          <div>
+            메인
+          </div>
+          <div id="articles">
+            <article style = "width : 33%;">1</article>
+            <article>2</article>
+            <article>3</article>
+          </div>
+        </section>
+        <aside>
+          <span>사이드</span>
+        </aside>
+      </main>
+ 
+    <footer><span>푸터</span></footer>
+  </div>
+</body>
+
+</html>

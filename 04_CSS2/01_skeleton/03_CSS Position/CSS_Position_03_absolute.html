@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>03_absolute</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* Absolute Position */
+      /* 스태틱이 아닌 가장 가까운 조상을 찾아서  -> style.css에 position-box가 렐러티브라서 얘가 기준이된다. */
+      /* 스태틱이 아닌 애를 못찾으면 계속 찾는데, 디폴트가 스태틱이다 다른 디브도 */
+      /* 따로 렐러티브로 지정된 디브를 못찾으면 전체화면을 기준으로 바디를 기준으로! */
+      .absolute .square:nthchild(2){
+        position: absolute;
+        top: 20px;
+        left:20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Absolute Position -->
+      <div>
+        <div class="title">ABSOLUTE</div>
+        <div class="position-box absolute">
+          <div class="square"></div>
+          <div class="square">absolute</div>
+          <div class="square"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

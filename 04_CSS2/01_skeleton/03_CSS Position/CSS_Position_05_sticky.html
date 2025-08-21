@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>05_sticky</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* Sticky Position */
+      /* 평소에는 static같이 있지만 스크롤에따라서 내리면은 fixed처럼 따라오게된다. */
+      .sticky-container {
+        height:300px;
+        width: 200px;
+        border:2px double blue;
+
+      }
+      .sticky .square:nth-child(2){
+        position: sticky;
+        background-color: chocolate;
+        top:0;
+        overflow-y: auto;
+      }
+      .sticky-content{
+        height:500px;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sticky Position -->
+      <div>
+        <div class="title">STICKY</div>
+        <div class="sticky-container sticky">
+          <div class="square"></div>
+          <div class="square">Sticky</div>
+          <div class="square"></div>
+          <div class="sticky-content">스크롤해보세요!</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
