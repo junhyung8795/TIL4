@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 컨테이너 */
+    .container {
+      width: 1200px;
+
+    }
+
+    /* 카드 스타일 */
+    .card {
+      border: 1px dashed green;
+      width: 700px;
+      margin: 100px auto;
+    }
+
+    .card-nav {
+      text-align: center;
+      background-color: rgb(156, 190, 105);
+    }
+
+    .card-header {
+      text-align: center;
+      margin-top: 18px;
+      margin-right: 18px;
+      margin-left: 18px;
+      font-size: 0;
+      /* line-height: 1.2; */
+    }
+
+    .card-img {
+      width: 100%;
+      height: 330px;
+    }
+
+    .card-img-decription {
+      height: 70px;
+      background-color: green;
+      color: white;
+      font-size: 20px;
+    }
+
+    .card-body {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-top: 36px;
+    }
+
+    .card-body-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .horizen {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .card-body-content {
+      padding: 10px 25px;
+    }
+    .card-footer{
+      background-color: green;
+      display:flex;
+      justify-content: flex-end;
+      padding-right:10px;
+      color:white;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 컨테이너 약힐 -->
+  <div class="container">
+    <!-- 오늘의 명소 카드 -->
+    <div class="card">
+      <!-- 카드의 내비게이션 -->
+      <div class="card-nav">
+        <h2>오늘의 명소</h2>
+      </div>
+
+      <!-- 카드의 헤더 부분 -->
+      <div class="card-header">
+        <img src="image.png" class="card-img" alt="성산 일출봉 이미지">
+        <div class="card-img-decription">
+          <h4>제주도</h4>
+          <h4>성산 일출봉</h4>
+        </div>
+
+      </div>
+      <!-- 카드의 바디 부분 -->
+      <div class="card-body">
+        <!-- 카드의 바디의 제목 -->
+        <div class="card-body-title">제주도 서귀포시 성산읍</div>
+        <p>2020.03.23</p>
+      </div>
+
+      <div class="horizen">
+        <hr />
+      </div>
+
+
+      <!-- 카드의 바디의 컨텐츠 내용부분 -->
+      <div class="card-body-content">
+        <p>성산 일출봉은 제돋의 다른 오름들과는 달리 마그마가 물속에서 분출하면서 만들어진 수성화산체다. 화산활동시 분출된 ㄸ,ㅡ거운 마그가막 차가운 바닷물과 만나면서 화산재가 습기를 많이 머금어 끈끈한
+          성질을 띄게 되었고, 이것이 층을 이루면서 쌓인 것이 성산 일출봉이다.</p>
+      </div>
+      <!-- 카드의 푸터 -->
+      <footer class="card-footer">
+        <p>&copy; SSAFY</p>
+      </footer>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

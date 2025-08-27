@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>setAttribute</title>
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <div id = "main">
+
+  </div>
+  <script>
+    // 코드를 작성하시오.
+    const imgTag = document.createElement("img")
+
+    const parentTag = document.querySelector("#main")
+    imgTag.setAttribute("src", "./assets/img/dixon.png")
+
+    parentTag.append(imgTag)
+  </script>
+</body>
+</html>
