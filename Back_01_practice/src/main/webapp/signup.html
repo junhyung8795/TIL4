@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>사람 등록 1s</h3>
+	<form action="user" method="POST">
+		<!--이번 요청은 등록이야!라는 구분자를 보내주는 것. 같은 post메서드를 써도 main으로 보내는 여러가지 Post를 구분하기 위해  -->
+		<!-- 히든 태그로 action: regist라는 것도 함께 보내 구분하게하는 것. -->
+		<!-- name이 키가 되고 value가 밸류가 된다.  -->
+		<input type="hidden" name="action" value="regist"> <label>이름:
+		</label> <input type="text" placeholder="이름을 입력하세요" name="name"><br>
+		<label>나이 : </label> 
+		<input type="number" min="0" placeholder="나이를 입력하세요" name="age">
+		<br> 
+		<!-- 라디오 버튼은 같은 name을 가진 인풋이 여러개면 하나만 쿼리스트링으로 날아간다. true건드려서 강제로 다 보낼 수도 있지만 -->
+			<input type="radio" id="man" name="gender" value="man"> 
+			<label for="man">남자</label> 
+			<input type="radio" id="woman" name="gender" value="woman"> 
+			<label for="woman">여자</label>
+
+		<fieldset>
+			<legend>취미</legend>
+			<input type="checkbox" id="sleep" name="hobby" value="sleep">
+			<label for="sleep">수면</label> <input type="checkbox" id="eat"
+				name="hobby" value="eat"> <label for="eat">먹기</label> <input
+				type="checkbox" id="study" name="hobby" value="study"> <label
+				for="study">공부</label>
+		</fieldset>
+		<input type="submit">
+	</form>
+</body>
+</html>

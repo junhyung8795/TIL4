@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	id="WebApp_ID" version="6.0">
+	<display-name>HelloServlet</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description></description>
+		<display-name>HelloServlet</display-name>
+		<servlet-name>HelloServlet</servlet-name>
+		<servlet-class>HelloServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/HelloServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- 서블릿을 선언하는 부분 servlet 태그 -->
+	<servlet>
+		<!-- 서블릿이름을 서블릿 클래스와 매핑해줘야한다!. -->
+		<servlet-name>bye</servlet-name>
+		<servlet-class>ByeServlet</servlet-class>
+	</servlet>
+	
+	<!-- URL 경로와 서블릿 이름을 매핑해줘야한다!. URL 경로 -> 서블릿이름, 서블릿이름 -> 서블릿 클래스(자바코드)순으로 매핑됨 -->
+<!-- 	<servlet-mapping>
+	<servlet-name>bye</servlet-name>
+	<url-pattern>/byee</url-pattern>
+	</servlet-mapping> -->
+	
+	
+</web-app>
