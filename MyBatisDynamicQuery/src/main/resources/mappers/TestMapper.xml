@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 연결할 매퍼 인터페이스의 전체 식별자 이름을 작성하는 공간(패키지+클래스이름) -->
+<mapper namespace="com.ssafy.day08.dao.TestDao">
+	<select id="selectBlogByTitle">
+		SELECT *
+		FROM blog
+		WHERE title LIKE CONCAT("%",
+		#{title}, "%")
+	</select>
+
+	<!-- mybatis 에서는 parameterType을 받은 값(value)에 의에서 알아서 타입추론을 진행한다...! -->
+	<select id="selectBlogByAuthorName">
+		SELECT *
+		FROM blog
+		WHERE author_name LIKE CONCAT("%",
+		#{authorName}, "%")
+	</select>
+
+	<select id="selectBlogByTitleAndAuthorName">
+		SELECT *
+		FROM blog
+		WHERE title LIKE CONCAT("%",
+		#{title}, "%") AND
+		author_name LIKE CONCAT("%", #{authorName}, "%")
+	</select>
+
+	<!-- 동적 쿼리: SQL문을 Mybatis 통해서 동적으로 런타임(Runtime)에 생성한다...! -->
+	
+	<!-- <select id="selectBlogByTitleOrAuthorName"> SELECT * FROM blog WHERE 
+		<trim></trim> <if test="title != null"> title LIKE CONCAT("%", #{title}, 
+		"%") </if> <if test="title != null and authorName != null"> OR </if> <if 
+		test="authorName != null"> author_name LIKE CONCAT("%", #{authorName}, "%") 
+		</if> </select> -->
+	
+
+	<!-- OR조건 하나쓰려고 if절 쓰는게 너무 번거롭다고 느껴진다. 실수할 확률도 높다! -->
+	<!-- trim 태그는 내부의 접두사 또는 접미사에 해당하는 문자열을 제거 또는 추가를 해주는 태그...! -->
+	<!-- <select id="selectBlogByTitleOrAuthorName"> SELECT * FROM blog WHERE 
+		<trim suffixOverrides="OR|AND" suffix=""> <if test="title != null and title 
+		!= ''"> title LIKE CONCAT("%", #{title}, "%") OR </if> <if test="authorName 
+		!= null and authorName != ''"> author_name LIKE CONCAT("%", #{authorName}, 
+		"%") </if> </trim> </select> -->
+
+	<!-- trim 태그는 내부의 접두사 또는 접미사에 해당하는 문자열을 제거 또는 추가를 해주는 태그...! -->
+	<select id="selectBlogByTitleOrAuthorName">
+		SELECT *
+		FROM blog
+		<trim prefixOverrides="OR|AND" suffix="WHERE">
+			<if test="title != null and title != ''">
+				OR title LIKE CONCAT("%", #{title}, "%")
+			</if>
+			<if test="authorName != null and authorName != ''">
+				OR author_name LIKE CONCAT("%", #{authorName}, "%")
+			</if>
+		</trim>
+	</select>
+
+	<update id="updateBlog">
+		UPDATE blog
+		<set><!--set태그는 <trim suffixOverride="," prefix="SET">과 같다. -->
+			<if test="title != null">title = #{title},</if>
+			<if test="authorName != null">author_name = #{authorName},</if>
+			<if test="state != null">state = #{state},</if>
+			<if test="featured != null">featured = #{featured},</if>
+		</set>
+
+		WHERE
+		id=#{id}
+	</update>
+</mapper>
