@@ -1,0 +1,33 @@
+package com.ssafy.mvc.model.dao;
+
+import java.util.List;
+
+import com.ssafy.mvc.model.dto.Board;
+import com.ssafy.mvc.model.dto.SearchCondition;
+
+//보드매퍼 xml를 통해서 매퍼와 매핑된 메서드를 사용하면 해당 쿼리문이 실행되게끔 할 것이다.
+public interface BoardDao {
+	// 전체 게시글을 조회
+	public List<Board> selectAll();
+
+	// 게시글 조회
+	public Board selectOne(int id);
+
+	// 게시글 등록
+	public void insertBoard(Board board);
+
+	// 게시글 삭제
+	public int deleteBoard(int id);//삭제 명령으로 영향받은 행의 수
+
+	// 게시글 수정
+	public void updateBoard(Board board);
+
+	// 조회수 증가
+	public void updateViewCnt(int id);
+
+	public List<Board> search(SearchCondition condition);
+	
+	//파일 업로드 정보 등록
+	public void insertFile(Board board);
+
+}
