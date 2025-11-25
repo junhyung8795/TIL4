@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <img src="https://picsum.photos/200" alt="">
+      <img v-bind: src="imageSrc" alt="">
+      
+      <a href="myURL">싸피 공홈</a>
+      <div :[dyattr]>"dyvalue"</div>
+    </div>
+    <script>
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const imageSrc = ref("https://picsum.photos/200");
+          const myURL = ref("https://ssafy.com")
+          const dyvalue=ref("Hello")
+
+          return { imageSrc,
+            myURL,
+            dyvalue,
+           };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

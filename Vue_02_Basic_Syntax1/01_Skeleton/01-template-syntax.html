@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 기본적인 콧수염 구문 -->
+      <p>{{msg}}</p>
+      <!-- 날것의 html 여기서는 문자열자체를 바인딩해서 그대로 보여주기만 하는거라 빨간색이 아닌 검정색으로 나옴-->
+      <p>{{rawHtml}}</p>
+      <!-- 이거자체를 html로 인식시키려면 v-html을 사용해야한다. -->
+      <div v-html="rawHtml"></div>
+      <!-- 자바스크립트 표현식 -->
+      <div v-bind:id="dynamicId">동적id</div>
+      <div>{{number + 1}}</div>
+      <div>{{ ok ? 'YES' : 'NO'}}</div>
+      <div v-bind:id="`list-${number}`">템플릿 리터럴 동적 ID</div>
+      <!-- 참거짓으로 보이거나 안보이게 -->
+      <div v-if="ok">ok가 참이면 문자열이 보임!</div>
+      <div v-show="ok">show가 보인다!</div>
+    </div>
+    <script>
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const msg = ref("메시지!")
+          const rawHtml = ref(`<span style="color:red">해당 글씨는 빨간색</span>`)
+          const dynamicId = ref('my-id')
+          const number = ref(1)
+          const ok = ref(true)
+          //선언하고 리턴까지해줘야한다.
+          return {
+            msg,
+            rawHtml,
+            dynamicId,
+            number,
+            ok,
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

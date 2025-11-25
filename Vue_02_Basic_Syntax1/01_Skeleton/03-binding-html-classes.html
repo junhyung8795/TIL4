@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .active {
+        color: crimson;
+      }
+
+      .text-primary {
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 객체 바인딩 -->
+      <div :class="{active: isActive}">글글글</div>
+      <div class="static" :class="{active: isActive, "text-primary": hasInfo}" ></div>
+      <div class="static" :class="classObj" >클래스로 만들어서 바인딩</div>
+
+      <!-- 배열 바인딩 -->
+      <div :class="[activeClass, infoClass]">배열로 바인딩</div>
+      <!-- 배열 구문 내에서 객체 구문 사용 -->
+      <div :class="[{active: isActive}, infoClass]"></div>
+    </div>
+
+
+
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const isActive = ref(true)
+          const hasInfo = ref(false)
+          const classObj = ref(
+            {
+              active: isActive,
+              'text-primary': hasInfo,
+            }
+          )
+          const activeClass = ref("active") 
+          const infoClass =ref("text-primary")
+          return {
+            isActive,
+            hasInfo,
+            classObj,
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
