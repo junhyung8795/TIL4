@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>남은 할 일</h2>
+    <p>{{todos.length > 0 ? "야근 각!" : "조기 퇴근!"}}</p>
+    <h3>computed</h3>
+    <p>{{restOfTodos}}</p>
+    <p>{{restOfTodos}}</p>
+    <h3>method</h3>
+    <p>{{getRestOfTodos()}}</p>
+    <p>{{getRestOfTodos()}}</p>
+  </div>
+
+  <script>
+    // 코드를 자유롭게 작성하세용
+    const { createApp, ref, computed } = Vue;
+
+    const app = createApp({
+      setup() {
+        const todos = ref([
+          { text: "Vue 공부하기" },
+          { text: "Vue 실습하기" },
+          { text: "밥먹기" },
+        ]);
+
+        // computed를 사용해서 표현해보기
+        const restOfTodos = computed(() => {
+          console.log("컴퓨티드 호출")//이거는 한번 호출됨
+
+          return todos.value.length > 0 ? "계산 결과 야근각!" : "계산 결과 퇴근각!"
+        })
+
+
+
+        // 함수 생성해서 사용해보기
+        const getRestOfTodos = function () {
+          console.log("메서드호출")//이건 두번 호출됨
+          return todos.value.length > 0 ? "함수결과 야근각" : "함수결과 퇴근각"
+        }
+
+
+
+        return {
+          todos,
+          restOfTodos,
+          getRestOfTodos,
+        };
+      },
+    });
+
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

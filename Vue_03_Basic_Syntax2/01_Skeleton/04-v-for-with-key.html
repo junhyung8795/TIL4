@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div v-for="item in items" :key="item.id">
+      {{item}}
+    </div>
+    <!-- key속성은 고유해야하므로  index같은거 쓰지말아라 -->
+    <div v-for="(item, index) in items" :key="index">
+      {{item}}
+    </div>
+
+
+
+  </div>
+
+  <script>
+    const { createApp, ref } = Vue;
+
+    const app = createApp({
+      setup() {
+        let id = 0;
+
+        const items = ref([
+          { id: id++, name: "Alice" },
+          { id: id++, name: "Bella" },
+        ]);
+
+        return {
+          items,
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

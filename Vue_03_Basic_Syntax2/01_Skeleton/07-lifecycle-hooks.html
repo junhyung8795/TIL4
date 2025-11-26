@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{count}}</p>
+    <button @click="count++">증가 </button>
+  </div>
+
+  <script>
+    const { createApp, ref, onMounted, onUpdated } = Vue;
+
+    const app = createApp({
+      setup() {
+        const count = ref(0);
+
+        onMounted(() => {
+          //연결이 됐을때 한번 동작
+          console.log("연결되었다.")
+        })
+
+        onUpdated(() => {
+          //내부적으로 변경이 일어날때 동작
+          console.log("수정되었다.")
+        })
+
+
+        return {
+          count,
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

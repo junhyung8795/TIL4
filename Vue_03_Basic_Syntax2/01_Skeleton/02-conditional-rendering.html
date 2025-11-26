@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- if는 초기조건이 false인 경우 아무런 작업도 수행안함 -->
+    <!-- 반면 토글을 하면 계속 작업을 해줘야해서 토글비용이 높음  -->
+    <div v-if="isSeen"> true일때 보여요</div>
+    <div v-else> false일때 보여요</div>
+    <!-- 아래와 같ㅇ 간단한 것은 작성할 수 있으나 권장하지 않음! -->
+    <button @click="isSeen = !isSeen">토글</button>
+    <hr>
+    <div v-if="name === 'Yang'">양</div>
+    <div v-else-if="name === 'park'">박</div>
+    <div v-else-if="name === 'kim'">김</div>
+    <div v-else">아무개</div>
+
+    <hr>
+    <template v-if="name === 'bot'">
+      <!-- 화면에 보이는 요소가 아님. 정확히는 보이지안흔ㄴ wrapper라서 조건이 만족되면?
+        f12할때 template은 없고 안에 있는 디브 두개만 나온다.-->
+      <div>로보트입니다.</div>
+      <div>AI기능이 있습니다.</div>
+    </template>
+
+    <hr>
+    <!-- 초기조건이 false든 아니든 항상 렌더링 -->
+    <!-- 초기 렌더링 비용이 더 높음 -->
+    <!-- 따라서 무언가를 자주 전환해야하면 v-show -->
+    <!-- 그게 아니면 v-if -->
+    <div v-show="isShow">
+      이게 보이나요?
+    </div>
+  </div>
+
+  <script>
+    const { createApp, ref } = Vue;
+
+    const app = createApp({
+      setup() {
+        const isSeen = ref(false);
+        const name = ref("bot")
+        const isShow = ref(false);
+        return {
+          isSeen,
+          name,
+          isShow,
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
