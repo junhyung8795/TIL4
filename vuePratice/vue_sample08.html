@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">{{ message }}</div>
+    <script>
+        const { createApp, ref,
+            onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted
+        } = Vue;
+
+        // Vue 인스턴스를 생성
+        const app = createApp({
+            setup() { // setup 라이프사이클 : 컴포넌트가 생성될 때에 가장 먼저 호출되는 함수...
+                const message = ref("hello :)");
+                // onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted
+                onBeforeMount(() => {
+                    console.log('onBeforeMount 호출됨...');
+                });
+                onMounted(() => {
+                    console.log('onMounted 호출됨...');
+                });
+                onBeforeUpdate(() => {
+                    console.log('onBeforeUpdate 호출됨...');
+                });
+                onUpdated(() => {
+                    console.log('onUpdated 호출됨...');
+                });
+                onBeforeUnmount(() => {
+                    console.log('onBeforeUnmount 호출됨...');
+                });
+                onUnmounted(() => {
+                    console.log('onUnmounted 호출됨...');
+                });
+
+                return {
+                    message,
+                }
+            }
+        })
+
+        // Vue 인스턴스를 #app 요소에 마운트
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

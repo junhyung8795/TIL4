@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<div id="app">
+    <!-- v-show: 조건부로 HTML 요소를 가시성(visibility) 변경하는 디렉티브.
+                 해당 HTML 요소를 숨김 스타일을 부여함 -->
+    <p v-show="islogined">로그인 되어 있음</p>
+    <p v-show="!islogined">로그인 되어 있지 않음ㅜ</p>
+    <p v-if="islogined">로그인 되어 있음</p>
+    <p v-if="!islogined">로그인 되어 있지 않음</p>
+
+</div>
+<script>
+    // AI 가 추천해준 코드를 반드시 검토하세요..! Tab 자동완성 절대 하지 말아라...!
+    const { createApp, ref } = Vue;
+
+    // Vue 인스턴스를 생성
+    const app = createApp({
+        setup() {
+            //로그인 되어있음에대한 상태를반응형 변수로 저의
+            const islogined = ref(true);
+            return {
+                islogined,
+            };
+        }
+    })
+
+    // Vue 인스턴스를 #app 요소에 마운트
+    app.mount('#app');
+</script>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        X: <input type="number" v-model="x" /> <br />
+        Y: <input type="number" v-model="y" /> <br />
+        Z: <input type="number" v-model="z" /> <br />
+        X + Y = {{ sumXY() }} <br />
+        X + Y (Computed) = {{ sumXY2 }} <br />
+    </div>
+    <script>
+        const { createApp, ref, computed } = Vue;
+
+        // Vue 인스턴스를 생성
+        const app = createApp({
+            setup() {
+
+                const x = ref(3);
+                const y = ref(4);
+                const z = ref(5);
+
+                // 메서드 x + y
+                const sumXY = function () {
+                    console.log('sumXY 메서드 호출됨...');
+                    return x.value + y.value;
+                }
+                // computed를 쓰게 된다면 우리가 원하는 x와 y가 변경될 때에만 계산해라...!
+                const sumXY2 = computed(() => {
+                    console.log('sumXY2 computed 호출됨...');
+                    return x.value + y.value;
+                })
+
+                return {
+                    x,
+                    y,
+                    z,
+                    sumXY,
+                    sumXY2,
+                }
+            }
+        })
+
+        // Vue 인스턴스를 #app 요소에 마운트
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

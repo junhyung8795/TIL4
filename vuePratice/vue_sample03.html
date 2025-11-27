@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<div id="app">
+    <!-- Vue 중요한 특성 한가지...!  
+     in-place-patch 전략 (땜빵 전략) : in-place(현 시점에서) PATCH(땜빵)을
+     dom이 실제 바뀌어야할 부분에만 최소한으로 수행하는 전략
+     우리가 변경사항을 VUE가상 DOM에 반영해보고 -> 수정하면 되겠다고 판단하면 실제 DOM에 최소한으로 반영!
+     
+    -->
+
+    <!-- 이렇게하면 순회버튼 누르면 숫자는 그대로 문자열만 rotate한다. 문자열부분 DOM만바뀜 땜빵만바뀐다!-->
+    <!-- <ul>
+        <li v-for="item in fruits" >
+            {{ item }}
+            <input type="number">개 구매하겟습니다.
+        </li>
+    </ul> -->
+    <!-- 이런 인플레스 전략을 조금 바꿔줘야함. 안내를 해줘야하는데 이 속성이 바로 key라는 속성이다. -->
+    <ul>
+        <li v-for="item in fruits" :key="item">
+            {{ item }}
+            <input type="number">개 구매하겟습니다.
+        </li>
+    </ul>
+    <button v-on:click="rotateFunction">순회</button>
+</div>
+<script>
+    // AI 가 추천해준 코드를 반드시 검토하세요..! Tab 자동완성 절대 하지 말아라...!
+    const { createApp, ref } = Vue;
+
+    // Vue 인스턴스를 생성
+    const app = createApp({
+        setup() {
+            // 과일 이름을 담고 있는 배열을 반응형 변수로 정의
+            const fruits = ref(['사과', '바나나', '오렌지', '포도', '수박']);
+            const rotateFunction = () => {
+                // 배열의 첫번째 요소를 빼어내서 뒤에 다시 추가
+                const first = fruits.value.shift();
+                fruits.value.push(first);
+            }
+            return {
+                fruits,
+                rotateFunction,
+            }
+        }
+    })
+
+    // Vue 인스턴스를 #app 요소에 마운트
+    app.mount('#app');
+</script>
+
+<body>
+</body>
+
+</html>
